@@ -9,4 +9,4 @@ const BodyComponent = () => {
   )
 }
 
-export default BodyComponent
+export default BodyComponent;
