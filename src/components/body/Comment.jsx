@@ -1,24 +1,34 @@
-
 import dateFormat from 'dateformat';
-import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
+import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from 'reactstrap';
 
 const Comment = ({ comment }) => {
   return (
-    <Card className="my-3">
+    <Card className="my-4 shadow-sm rounded border-light">
       <CardBody>
-        <CardTitle tag="h6" className="text-primary">
+        {/* Author's name */}
+        <CardTitle tag="h5" className="text-primary font-weight-bold mb-2">
           {comment.author}
         </CardTitle>
-        <CardSubtitle tag="h7" className="text-muted mb-2">
-          {dateFormat(comment.date, "dddd, mmmm dS, yyyy, h:MM:ss TT")};
+
+        {/* Date and Time */}
+        <CardSubtitle tag="h6" className="text-muted mb-3">
+          {dateFormat(comment.date, "dddd, mmmm dS, yyyy, h:MM:ss TT")}
         </CardSubtitle>
-        <CardText className="mb-2">
-          <strong>Rating:</strong> {comment.rating}
+
+        {/* Rating */}
+        <CardText className="mb-3">
+          <strong className="text-dark">Rating:</strong> {comment.rating} / 5
         </CardText>
-        <CardText >{comment.comment}</CardText>
+
+        {/* Comment Text */}
+        <CardText className="text-secondary">
+          {comment.comment}
+        </CardText>
+
       </CardBody>
     </Card>
   );
 };
 
 export default Comment;
+
