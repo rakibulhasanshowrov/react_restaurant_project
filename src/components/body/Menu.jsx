@@ -28,6 +28,7 @@ class Menu extends Component {
   }
 
   render() {
+    document.title='Menu'
     const menu = this.state.dishes.map((dish) => {
       return (
         <Col md={4} sm={6} key={dish.id} className="mb-4"> {/* Use column sizing to create a responsive grid */}

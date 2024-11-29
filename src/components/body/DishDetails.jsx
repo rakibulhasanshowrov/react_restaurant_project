@@ -2,6 +2,7 @@
 import {Card,CardImg,CardBody,CardTitle,CardText} from 'reactstrap'
 import LoadComments from './LoadComments'
 const DishDetails = ({dish,comments}) => {
+  document.title='Dish Details'
   return (
     <div>
       <Card className="my-2">

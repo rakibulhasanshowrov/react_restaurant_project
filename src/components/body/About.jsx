@@ -1,6 +1,7 @@
 
 
 const About = () => {
+  document.title='About Us'
   return (
     <div>
       About
