@@ -1,12 +1,14 @@
 import { Component } from "react";
 import MenuItem from "./MenuItem";
 import DISHES from "../../data/dishes";
+import COMMENTS from "../../data/comments";
 import DishDetails from "./DishDetails";
 import { Row, Col, Modal, ModalFooter,Button } from "reactstrap"; // Use Row and Col for better grid control
 
 class Menu extends Component {
   state = {
     dishes: DISHES,
+    comments:COMMENTS,
     SelectedDish: null,
     modalOpen:false,
   };
@@ -34,9 +36,15 @@ class Menu extends Component {
       );
     });
 
-    const dishDetails = this.state.SelectedDish ? (
-      <DishDetails dish={this.state.SelectedDish} />
-    ) : null;
+    let dishDetails = null;
+
+    if (this.state.SelectedDish) {
+      const comments = this.state.comments.filter(comment => {
+        return comment.dishId === this.state.SelectedDish.id;
+      });
+      dishDetails = <DishDetails dish={this.state.SelectedDish} comments={comments} />;
+    }
+
 
     return (
       <div className="container">
