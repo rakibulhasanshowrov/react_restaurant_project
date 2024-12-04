@@ -39,7 +39,6 @@ export default class Contact extends Component {
         <div className='row row-content' style={{paddingLeft:'20px',textAlign:"left"}}>
           <div className='col-12'>
             <h3>Send us your Feedback</h3>
-
           </div>
           <div className='col-12 col-md-7'>
             <Form onSubmit={this.handleSubmit}>
