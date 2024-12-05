@@ -1,5 +1,5 @@
 import { Component } from "react";
-import MenuItem from "./MenuItem";
+import MenuItem from "./MenuItem"; 
 import DishDetails from "./DishDetails";
 import { Row, Col, Modal, ModalFooter,Button } from "reactstrap"; // Use Row and Col for better grid control
 import { connect } from "react-redux";
