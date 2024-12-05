@@ -1,6 +1,7 @@
 
 import {Card,CardImg,CardBody,CardTitle,CardText} from 'reactstrap'
 import LoadComments from './LoadComments'
+import CommentForm from './CommentFrom'
 const DishDetails = ({dish,comments}) => {
   document.title='Dish Details'
   return (
@@ -28,6 +29,8 @@ const DishDetails = ({dish,comments}) => {
       </CardText>
       <hr />
       <LoadComments comments={comments} key={dish.id} />
+      <hr />
+      <CommentForm />
     </CardBody>
   </Card>
     </div>

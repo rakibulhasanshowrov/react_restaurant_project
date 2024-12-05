@@ -54,7 +54,7 @@ class Menu extends Component {
       <div className="container">
         <div className="row">
           {menu} {/* Display the menu items as grid columns */}
-          <Modal isOpen={this.state.modalOpen} onClick={this.toggleModal}>{dishDetails}
+          <Modal isOpen={this.state.modalOpen} >{dishDetails}
             <ModalFooter>
               <Button color='primary' onClick={this.toggleModal}>close</Button>
             </ModalFooter>
