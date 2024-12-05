@@ -1,14 +1,17 @@
 import { Component } from "react";
 import MenuItem from "./MenuItem";
-import DISHES from "../../data/dishes";
-import COMMENTS from "../../data/comments";
 import DishDetails from "./DishDetails";
 import { Row, Col, Modal, ModalFooter,Button } from "reactstrap"; // Use Row and Col for better grid control
+import { connect } from "react-redux";
 
+const mapStateToProps=state=>{
+  return{
+    dishes:state.dishes,
+    comments:state.comments
+  }
+}
 class Menu extends Component {
   state = {
-    dishes: DISHES,
-    comments:COMMENTS,
     SelectedDish: null,
     modalOpen:false,
   };
@@ -29,7 +32,7 @@ class Menu extends Component {
 
   render() {
     document.title='Menu'
-    const menu = this.state.dishes.map((dish) => {
+    const menu = this.props.dishes.map((dish) => {
       return (
         <Col md={4} sm={6} key={dish.id} className="mb-4"> {/* Use column sizing to create a responsive grid */}
           <MenuItem dish={dish} onSelectDish={() => this.onSelectDish(dish)} />
@@ -40,7 +43,7 @@ class Menu extends Component {
     let dishDetails = null;
 
     if (this.state.SelectedDish) {
-      const comments = this.state.comments.filter(comment => {
+      const comments = this.props.comments.filter(comment => {
         return comment.dishId === this.state.SelectedDish.id;
       });
       dishDetails = <DishDetails dish={this.state.SelectedDish} comments={comments} />;
@@ -63,5 +66,5 @@ class Menu extends Component {
   }
 }
 
-export default Menu;
+export default  connect(mapStateToProps)(Menu);
 
