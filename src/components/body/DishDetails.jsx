@@ -2,7 +2,7 @@
 import {Card,CardImg,CardBody,CardTitle,CardText} from 'reactstrap'
 import LoadComments from './LoadComments'
 import CommentForm from './CommentFrom'
-const DishDetails = ({dish,comments}) => {
+const DishDetails = ({dish,comments,addComment}) => {
   document.title='Dish Details'
   return (
     <div>
@@ -30,7 +30,7 @@ const DishDetails = ({dish,comments}) => {
       <hr />
       <LoadComments comments={comments} key={dish.id} />
       <hr />
-      <CommentForm  dishId={dish.id}/>
+      <CommentForm  dishId={dish.id} addComment={addComment}/>
     </CardBody>
   </Card>
     </div>

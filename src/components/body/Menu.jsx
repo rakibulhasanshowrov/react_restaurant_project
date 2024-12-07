@@ -10,6 +10,22 @@ const mapStateToProps=state=>{
     comments:state.comments
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addComment:(dishId,rating,author,comment) => dispatch({
+      type:"ADD_COMMENT",
+      payload:{
+        dishId:dishId,
+        author:author,
+        rating:rating,
+        comment:comment,
+      }
+    }),
+    //Now we can pass Other dispatch  function as a object after that 
+    // so thats how it is now organized  way of dispatching function
+  }
+}
 class Menu extends Component {
   state = {
     SelectedDish: null,
@@ -46,7 +62,7 @@ class Menu extends Component {
       const comments = this.props.comments.filter(comment => {
         return comment.dishId === this.state.SelectedDish.id;
       });
-      dishDetails = <DishDetails dish={this.state.SelectedDish} comments={comments} />;
+      dishDetails = <DishDetails dish={this.state.SelectedDish} comments={comments} addComment={this.props.addComment} />;
     }
 
 
@@ -66,5 +82,5 @@ class Menu extends Component {
   }
 }
 
-export default  connect(mapStateToProps)(Menu);
+export default  connect(mapStateToProps,mapDispatchToProps)(Menu);
 
