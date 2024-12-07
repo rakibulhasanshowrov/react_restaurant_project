@@ -1,25 +1,28 @@
 
 import DISHES from "../data/dishes";
 import COMMENTS from "../data/comments";
-const initialState={
-  dishes:DISHES ,
-  comments:COMMENTS ,
+//need to use to combine the reducer 
+import { combineReducers } from "redux";
+
+//multiple Reducer for different component 
+const dishReducer=(dishState=DISHES,action) =>{
+  
+  return dishState;
 }
 
-export const Reducer =(state=initialState,action) =>{
+const commentReducer=(commentState=COMMENTS,action) => {
   console.log("Action:",action);
   if(action.type === "ADD_COMMENT"){
     let comment=action.payload;
-    comment.id=state.comments.length;
+    comment.id=commentState.length;
     comment.date=new Date().toDateString()
     //now update the state 
-    return {
-      ...state,
-      comments:state.comments.concat(comment),
-    }
+    return commentState.concat(comment);
     
   }
-  
-  return state;
-
+  return commentState;
 }
+export const Reducer =combineReducers({
+  dishes:dishReducer,        ///since DISHES is passed from individual reducers thus we dont need the initial state code 
+  comments:commentReducer
+})
