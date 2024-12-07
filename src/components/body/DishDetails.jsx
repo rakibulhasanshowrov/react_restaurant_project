@@ -30,7 +30,7 @@ const DishDetails = ({dish,comments}) => {
       <hr />
       <LoadComments comments={comments} key={dish.id} />
       <hr />
-      <CommentForm />
+      <CommentForm  dishId={dish.id}/>
     </CardBody>
   </Card>
     </div>
