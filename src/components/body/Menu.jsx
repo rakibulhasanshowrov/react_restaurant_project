@@ -3,7 +3,7 @@ import MenuItem from "./MenuItem";
 import DishDetails from "./DishDetails";
 import { Row, Col, Modal, ModalFooter,Button } from "reactstrap"; // Use Row and Col for better grid control
 import { connect } from "react-redux";
-import * as actionTypes from "../../redux/actionTypes"
+import { addComment } from "../../redux/actionCreators";
 const mapStateToProps=state=>{
   return{
     dishes:state.dishes,
@@ -13,15 +13,7 @@ const mapStateToProps=state=>{
 
 const mapDispatchToProps = dispatch => {
   return {
-    addComment:(dishId,rating,author,comment) => dispatch({
-      type:actionTypes.ADD_COMMENT,
-      payload:{
-        dishId:dishId,
-        author:author,
-        rating:rating,
-        comment:comment,
-      }
-    }),
+    addComment:(dishId,rating,author,comment) => dispatch(addComment(dishId,rating,author,comment))
     //Now we can pass Other dispatch  function as a object after that 
     // so thats how it is now organized  way of dispatching function
   }
