@@ -1,5 +1,5 @@
 import  { Component } from 'react'
-
+import Loading from './Loading';
 
 
 
@@ -8,7 +8,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        Home
+        <Loading />
       </div>
     )
   }
